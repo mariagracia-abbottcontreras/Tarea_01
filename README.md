@@ -11,7 +11,21 @@ Por lo anterior, y en el marco del curso ICP5006-1 "Medición y análisis dimens
 
 Para conseguir lo anterior, se describirán en primer lugar las bases de datos utilizadas. Después se analizarán la cantidad de videos reproducidas personalmente del total de videos disponibles, para luego realizar y comparar los 10 videos más vistos tanto a nivel general como a nivel personal. Por último, se analizarán los días que más contaron con reproducciones personales.Finalmente, se realizará una pequeña reflexión en torno a lo descubierto y aprendido de este ejercicio (spoiler: aprendí mucho más de mis hábitos digitales de lo que me hubiera gustado).
 
-# 0.1 Paquetes instalados
+# 0.1 Índice
+- 01_scripts:
+  Es posible encontrar:
+        - ![Base de datos - Tarea 1](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/01_scripts/Base2%20de%20datos%20-%20Tarea%201.Rmd)
+          (En este script se explica la construcción de las bases de datos)
+        - ![Tarea 1](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/01_scripts/Tarea%201_.Rmd)
+          (En este script se visualizan las tablas y gráficos de mejor manera)
+- 02_data:
+    Es posible encontrar:
+        - ![Playlist de Youtube de GOSE](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/02_data/youtube_playlist_GOSE_stats_complete.csv)
+        - ![Historial personal de GOSE](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/02_data/historial_personal_gose.csv)
+- 03_output:
+    - Gráficos y visualizaciones
+
+# 0.2 Paquetes instalados
 Primero, estos son los paquetes que utilicé para realizar el análisis dispuesto abajo. En caso de no tenerlos instalados recuerda hacerlo utilizando la función "install.packages".
 
 ```{r - Instalar paquetes}
