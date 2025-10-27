@@ -1,19 +1,19 @@
-# Tarea_01: ¿Cuáles son las tendencias de reproducciones de los videos de Going Seventeen?
+---
+title: "Tarea 1"
+output: html_document
+date: "2025-10-22"
+---
 
-- Autora: María Gracia Abbott
-- Fecha de realización: 26 de octubre de 2025
-
-
-# 1. Introducción
+# 0. Introducción
 Hace un tiempo, mientras miraba videos de "Run BTS", un show de variedades que tiene como protagonistas al grupo de K-Pop BTS, me crucé por casualidad con un video de "Going Seventeen". Lo disfruté muchisimo y buscando más me di cuenta que era el show de variedades de otro grupo de K-Pop llamado Seventeen (y que parece que es muy común que los grupos de K-Pop tengan sus propios shows de variedades). Seventeen es un grupo masculino de 13 miembros con una afinidad a ser graciosos y competitivos (entendible si tienen que luchar con otras 12 personas por tener tiempo de pantalla), por lo que pronto estaba viendo sus videos religiosamente cada miércoles y actualizandome con los que habían salido en años anteriores. 
 
 Por lo anterior, y en el marco del curso ICP5006-1 "Medición y análisis dimensional de datos políticos", decidí analizar las tendencias generales y personales relacionadas con los videos de Going Seventeen. Para ello, utilicé dos bases de datos extraídas desde Youtube API y construidas y limpiadas en RStudio. En el siguiente trabajo se exploran los datos generales de ambas bases, para luego analizar las tendencias de reproducciones que estas contenían.
 
 Para conseguir lo anterior, se describirán en primer lugar las bases de datos utilizadas. Después se analizarán la cantidad de videos reproducidas personalmente del total de videos disponibles, para luego realizar y comparar los 10 videos más vistos tanto a nivel general como a nivel personal. Por último, se analizarán los días que más contaron con reproducciones personales.Finalmente, se realizará una pequeña reflexión en torno a lo descubierto y aprendido de este ejercicio (spoiler: aprendí mucho más de mis hábitos digitales de lo que me hubiera gustado).
 
-# 2.## 0.1 Paquetes instalados
-Primero, estos son los paquetes que utilicé para realizar el análisis dispuesto abajo. En caso de no tenerlos instalados recuerda hacerlo utilizando la función "install.packages".
 
+## 0.1 Paquetes instalados
+Primero, estos son los paquetes que utilicé para realizar el análisis dispuesto abajo. En caso de no tenerlos instalados recuerda hacerlo utilizando la función "install.packages".
 ```{r - Instalar paquetes}
 library(dplyr)
 library(ggplot2)
@@ -25,14 +25,12 @@ library(readr)
 Para la realización de esta tarea se construyeron dos bases. Ambas fueron extraídas desde Youtube API, necesitando la ayuda de "ChatGPT" y "Grok" para llegar a los codigos que me permitieron alcanzar las bases de datos que deseaba. En el archivo "Bases de datos - Tarea 1" es posible encontrar el procedimiento detallado, incluyendo los procesos de limpieza de las variables junto con sus observaciones. La primera base de datos corresponde a la unión de todas las playlists del artista que contuvieran videos de Going Seventeen. Correspondiendo estas a "Going Seventeen 2019", "Going Seventeen 2020" y "Going Seventeen", esta última conteniendo los videos desde el 2021 hasta la actualidad. Segundo, se filtró el historial personal de reproducciones de manera que contuviera unicamente aquellas relacionadas con la primera base realizada. A continuación, se importarán las bases de datos y se realizará un análisis descriptivo de estas mediante la realización de tablas descriptivas para cada una de ellas.
 
 ## 1.1  Importar y definir bases de datos como objetos
-
 ```{r}
 #Definimos la base de datos relacionada con los datos de las playlists de Going Seventeen
-playlist_df <- read_csv("C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea_01/02_data/youtube_playlist_GOSE_stats_complete.csv")
-
+playlist_df <- read_csv("C:/Users/Marita Abbott/Documents/R/R Magister/Proyecto local/Tarea_01/02_data/youtube_playlist_GOSE_stats_complete.csv")
 
 #Definimos la base de datos de los datos de mi historial personal relacionado con Going Seventeen
-historial_df <- read_csv("C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea_01/02_data/historial_personal_gose.csv")
+historial_df <- read_csv("C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea 1/historial_personal_gose.csv")
 ```
 
 
@@ -41,7 +39,6 @@ A continuación, se muestran las tablas descriptivas realizadas con el fin de re
 
 ### 1.2.1 Playlist de Going Seventeen
 Al realizar la tabla descriptiva de los videos relacionados con Going Seventeen notamos que, a la fecha de extracción de los datos, esta contaba con 263 observaciones. Es decir, 263 videos relacionados de alguna forma con Going Seventeen, subidos por Seventeen. El video con más reproducciones cuenta con 22.051.524 vistas, mientras que el que menos tiene cuenta unicamente con 202.996, siendo el promedio de reproducciones de los videos de 5.450.476. Por otro lado, la base cuenta con datos relacionados a los likes y comentarios que cada video tiene, los cuales se pueden notar en la tabla incluída abajo.
-
 ```{r}
 T_descriptiva_playlist <- summary(playlist_df)
 print(T_descriptiva_playlist)
@@ -98,7 +95,6 @@ print(tf_playlist)
 
 #### 2.1.1.2 Historial personal de Going Seventeen:
 Por otro lado, al realizar el análisis de mi propio historial de reproducciones notamos que el video que más he visto es "Best Friends #2" con 12 reproducciones. El segundo lugar lo comparten "Planting Rice and Making Bets #1" y "Kickball #1" con 9 reproducciones. Mientras que el tercer lugar, con 8 reproducciones, lo tienen "I Know & I Don't Know #1", "Kickball #2" y "BOOmily Outing #3". Mis 10 videos más vistos alcanzan el 14.97% de mi total de reproducciones.
-
 ```{r}
 tf_historial <- historial_df |> 
   count(titulo) |> 
@@ -112,7 +108,6 @@ print(tf_historial)
 
 #### 2.1.1.3 ¿Qué videos de mi top 10 se encuentran en el top 10 general?
 Por otro lado, quise saber, y dejar plasmado en un código, si existían coincidencias entre mi top 10 de videos más reproducidos y el top 10 general. Encontrando que, efectivamente, tanto el primer como el segundo video más visto del top general de reproducciones se encuentran dentro de mi top personal. Puedo confirmar personalmente que tanto "Best Friends #2" y "The Tag #1" (siendo este además el primer video que vi de Going Seventeen) son excelentes videos y merecen todas las reproducciones que tienen.
-
 ```{r}
 # Qué videos de mi top 10 se encuentran en el top 10 general
 tf_historial |> 
@@ -125,7 +120,6 @@ tf_historial |>
 De igual manera, quería graficar los resultados anteriores resaltando visualmente aquellos dos videos que se repiten en ambas listas.
 
 #### 2.1.2.1 Gráfico: Playlist Going Seventeen
-
 ```{r}
 #Gráfico tabla de frecuencias playlist general
 ggplot(tf_playlist, 
@@ -156,7 +150,6 @@ ggsave("C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea 1/03_output/t
 ```
 
 #### 2.1.2.2 Gráfico: Historial personal de Going Seventeen
-
 ```{r}
 #Gráfico tabla de frecuencias historial personal
 ggplot(tf_historial, 
@@ -181,7 +174,6 @@ Por otro lado, quería también saber cuantos videos como máximo había visto p
 
 ### 2.2.1 Tabla de frecuencias
 Al analizar la tabla de frecuencias damos cuenta que el máximo de videos que he reproducido por día han sido 19, lo cual sucedió el 03 de octubre del 2024. Si consideramos que cada video dura aproximadamente 30 minutos, podemos asumir que en total me pasé 570 minutos, o mejor dicho, 9.5 horas viendo Going Seventeen (:o). El segundo lugar, se lo lleva el 05 de noviembre de 2022 con 14 reproducciones (7 horas), mientras que el tercer lugar es del 07 de noviembre del 2022 (dos días después) y el 01 de abril de 2023 con 12 reproducciones cada uno, lo que corresponde a 6 horas por día (:o). Si sumamos mi top 3 días que más reproduje videos alcanzamos un total de 28.5 horas solamente mirando videos en un total de 4 días (:o :o :o). No está de más comentar que este ejercicio me ha servido para reflexionar sobre mis hábitos digitales.
-
 ```{r}
 tf_historial_fecha <- historial_df |> 
   count(fecha_vista) |> 
@@ -195,7 +187,6 @@ print(tf_historial_fecha)
 
 ### 2.2.2 Gráfico
 Como no, no podía faltar el gráfico para que visualicemos juntos de mejor manera la mayor evidencia de que quizás me convertí en lo que juré destruir (soy basicamente una niña ipad).
-
 ```{r}
 #Gráfico tabla de frecuencias fechas
 ggplot(tf_historial_fecha, 
@@ -213,7 +204,6 @@ ggplot(tf_historial_fecha,
 ggsave("C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea 1/03_output/top10_fechas_gose_plot.png")
 
 ```
-
 
 
 # 3. Conclusión
