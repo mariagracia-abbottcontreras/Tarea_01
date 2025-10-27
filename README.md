@@ -11,7 +11,7 @@ Por lo anterior, y en el marco del curso ICP5006-1 "Medición y análisis dimens
 
 Para conseguir lo anterior, se describirán en primer lugar las bases de datos utilizadas. Después se analizarán la cantidad de videos reproducidas personalmente del total de videos disponibles, para luego realizar y comparar los 10 videos más vistos tanto a nivel general como a nivel personal. Por último, se analizarán los días que más contaron con reproducciones personales.Finalmente, se realizará una pequeña reflexión en torno a lo descubierto y aprendido de este ejercicio (spoiler: aprendí mucho más de mis hábitos digitales de lo que me hubiera gustado).
 
-# 2.## 0.1 Paquetes instalados
+# 0.1 Paquetes instalados
 Primero, estos son los paquetes que utilicé para realizar el análisis dispuesto abajo. En caso de no tenerlos instalados recuerda hacerlo utilizando la función "install.packages".
 
 ```{r - Instalar paquetes}
@@ -125,7 +125,9 @@ tf_historial |>
 De igual manera, quería graficar los resultados anteriores resaltando visualmente aquellos dos videos que se repiten en ambas listas.
 
 #### 2.1.2.1 Gráfico: Playlist Going Seventeen
+![Texto alternativo](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/03_output/top10_videos%2Bvistos_general_gose_plot.png)
 
+Aquí puedes encontrar el código con el que lo realicé:
 ```{r}
 #Gráfico tabla de frecuencias playlist general
 ggplot(tf_playlist, 
@@ -156,7 +158,9 @@ ggsave("C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea 1/03_output/t
 ```
 
 #### 2.1.2.2 Gráfico: Historial personal de Going Seventeen
+![Texto alternativo](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/03_output/top10_videos%2Bvistos_personal_gose_plot.png)
 
+Aquí está el código de cómo lo realicé:
 ```{r}
 #Gráfico tabla de frecuencias historial personal
 ggplot(tf_historial, 
@@ -195,7 +199,9 @@ print(tf_historial_fecha)
 
 ### 2.2.2 Gráfico
 Como no, no podía faltar el gráfico para que visualicemos juntos de mejor manera la mayor evidencia de que quizás me convertí en lo que juré destruir (soy basicamente una niña ipad).
+![Texto alternativo](https://github.com/mariagracia-abbottcontreras/Tarea_01/blob/main/03_output/top10_fechas_gose_plot.png)
 
+Aquí está el código de cómo lo realicé:
 ```{r}
 #Gráfico tabla de frecuencias fechas
 ggplot(tf_historial_fecha, 
