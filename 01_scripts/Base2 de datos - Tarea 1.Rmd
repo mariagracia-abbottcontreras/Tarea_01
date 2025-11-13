@@ -328,7 +328,7 @@ Solo nos queda guardarla en nuestro dispositivo y listo.
 ```{r}
 
 #Guardar en CSV
-write.csv(final_df, "C:/Users/Marita Abbott/Documents/R/R Magister/Tareas/Tarea 1/historial_personal_gose.csv", row.names = FALSE)
+write.csv(final_df, "../02_data/historial_personal_gose.csv", row.names = FALSE)
 cat("Archivo guardado como 'historial_personal_gose.csv'\n")
 
 ```
